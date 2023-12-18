@@ -2,10 +2,8 @@
 
 one:
   user: one
-  food: one
-  quantity: 1
+  name: MyString
 
 two:
   user: two
-  food: two
-  quantity: 1
+  name: MyString

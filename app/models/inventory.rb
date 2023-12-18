@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class Inventory < ApplicationRecord
   belongs_to :user
-  belongs_to :food
+  has_many :inventory_foods
 end
