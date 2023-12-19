@@ -18,7 +18,6 @@ env:
   user: 'sagieramos'
   project_id: 3
 
-  # jobs:
   #   automate-project-columns:
   #     runs-on: ubuntu-latest
   #     steps:
@@ -27,7 +26,7 @@ env:
   #           project: 'Recipe App'
   #           column: 'In Review'
   #           repo-token: ${{ secrets.GHPROJECT }}
-
+jobs:
   pr_reviewrequested:
     name: pr_reviewrequested
     runs-on: ubuntu-latest
