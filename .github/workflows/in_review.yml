@@ -13,31 +13,40 @@ on:
   pull_request:
     types: [review_requested]
 
-env:
-  in_review: 'In Review'
-  user: 'sagieramos'
-  project_id: 3
+# env:
+#   in_review: 'In Review'
+#   user: 'sagieramos'
+#   project_id: 3
 
-  #   automate-project-columns:
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - uses: alex-page/github-project-automation-plus@v0.8.3
-  #         with:
-  #           project: 'Recipe App'
-  #           column: 'In Review'
-  #           repo-token: ${{ secrets.GHPROJECT }}
 jobs:
-  pr_reviewrequested:
-    name: pr_reviewrequested
+  # automate-project-columns:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: alex-page/github-project-automation-plus@v0.8.3
+  #       with:
+  #         project: 'Recipe App'
+  #         column: 'In Review'
+  #         repo-token: ${{ secrets.GHPROJECT }}
+  automate-project-columns:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'review_requested'
     steps:
-      - name: Move PR to ${{ env.in_review }}
-        uses: leonsteinhaeuser/project-beta-automations@v2.1.0
+      - uses: Fmanuel809/github-project-automation-v2@0.8.2
         with:
-          gh_token: ${{ secrets.GHPROJECT }}
-          user: ${{ env.user }}
-          # organization: sample-org
-          project_id: ${{ env.project_id }}
-          resource_node_id: ${{ github.event.pull_request.node_id }}
-          status_value: ${{ env.in_review }} # Target status
+          project: 'Recipe App'
+          column: 'In Review'
+          repo-token: ${{ secrets.GHPROJECT }}
+
+  # pr_reviewrequested:
+  #   name: pr_reviewrequested
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'pull_request' && github.event.action == 'review_requested'
+  #   steps:
+  #     - name: Move PR to ${{ env.in_review }}
+  #       uses: leonsteinhaeuser/project-beta-automations@v2.1.0
+  #       with:
+  #         gh_token: ${{ secrets.GHPROJECT }}
+  #         user: ${{ env.user }}
+  #         # organization: sample-org
+  #         project_id: ${{ env.project_id }}
+  #         resource_node_id: ${{ github.event.pull_request.node_id }}
+  #         status_value: ${{ env.in_review }} # Target status
