@@ -8,10 +8,10 @@
 # You can also reference a tag or branch, but the action may change without warning.
 
 name: Move pull request to In Review
+
 on:
   pull_request:
-    types:
-      - [review_requested]
+    types: [review_requested]
 jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
