@@ -41,8 +41,6 @@ class RecipesController < ApplicationController
   end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
-
-
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @recipe = Recipe.find(params[:id])
