@@ -2,11 +2,11 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :inventory_foods
-  # resources :recipe_foods
-  # resources :foods
+  # resources :inventory_foods
+  resources :recipe_foods
+  resources :foods
   resources :recipes
-  resources :inventories do
+  resources :inventories, except: [:update, :edit] do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
   # resources :users
