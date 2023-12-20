@@ -7,11 +7,13 @@ class InventoriesController < ApplicationController
   end
 
   # GET /inventories/1 or /inventories/1.json
-  def show; end
+  def show
+    @foods = @inventory.foods
+  end
 
   # GET /inventories/new
   def new
-    @inventory = Inventory.new
+    @inventory = current_user.inventories.build
   end
 
   # GET /inventories/1/edit
@@ -19,7 +21,7 @@ class InventoriesController < ApplicationController
 
   # POST /inventories or /inventories.json
   def create
-    @inventory = Inventory.new(inventory_params)
+    @inventory = current_user.inventories.build(inventory_params)
 
     respond_to do |format|
       if @inventory.save

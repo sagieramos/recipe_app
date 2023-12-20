@@ -1,5 +1,6 @@
 class InventoryFoodsController < ApplicationController
   before_action :set_inventory_food, only: %i[show edit update destroy]
+  before_action :set_inventory, only: %i[new create edit destroy]
 
   # GET /inventory_foods or /inventory_foods.json
   def index
@@ -11,7 +12,7 @@ class InventoryFoodsController < ApplicationController
 
   # GET /inventory_foods/new
   def new
-    @inventory_food = InventoryFood.new
+    @inventory_food = @inventory.inventory_foods.build
   end
 
   # GET /inventory_foods/1/edit
@@ -19,7 +20,7 @@ class InventoryFoodsController < ApplicationController
 
   # POST /inventory_foods or /inventory_foods.json
   def create
-    @inventory_food = InventoryFood.new(inventory_food_params)
+    @inventory_food = @inventory.inventory_foods.build(inventory_food_params)
 
     respond_to do |format|
       if @inventory_food.save
@@ -61,6 +62,10 @@ class InventoryFoodsController < ApplicationController
 
   private
 
+  def set_inventory
+    @inventory = Inventory.find(params[:id])
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_inventory_food
     @inventory_food = InventoryFood.find(params[:id])
@@ -68,6 +73,6 @@ class InventoryFoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def inventory_food_params
-    params.require(:inventory_food).permit(:inventory_id, :food_id, :quantity)
+    params.require(:inventory_food).permit(:food_id, :quantity)
   end
 end

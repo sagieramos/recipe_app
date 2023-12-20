@@ -3,13 +3,18 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :inventory_foods
-  resources :recipe_foods
+  # resources :recipe_foods
+  # resources :foods
   resources :recipes
-  resources :inventories
-  resources :foods
-  resources :users
+  resources :inventories do
+    resources :inventory_foods, only: [:new, :create, :destroy]
+  end
+  # resources :users
 
-  root 'users#index'
+  # path for new inventory food
+
+
+  root 'inventories#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
