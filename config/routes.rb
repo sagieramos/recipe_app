@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   devise_for :users
   # resources :inventory_foods
   resources :recipe_foods
+  # resources :recipes
   resources :foods
-  resources :recipes
+  resources :recipes do
+    member do
+      patch 'toggle_public'
+    end
+  end
   resources :inventories, except: [:update, :edit] do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
