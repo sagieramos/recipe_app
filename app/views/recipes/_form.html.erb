@@ -15,7 +15,7 @@
 
   <div>
     <%= form.label :name %>
-    <%= form.number_field :name %>
+    <%= form.text_area :name %>
   </div>
 
   <div>
@@ -25,12 +25,12 @@
 
   <div>
     <%= form.label :cooking_time %>
-    <%= form.text_area :cooking_time, step: 0.01 %>
+    <%= form.number_field :cooking_time, step: 0.01 %>
   </div>
 
   <div>
     <%= form.label :description %>
-    <%= form.check_box :description %>
+    <%= form.text_field :description %>
   </div>
 
   <div>
