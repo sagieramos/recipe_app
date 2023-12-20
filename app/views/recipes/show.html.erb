@@ -1,10 +1,61 @@
-<p style="color: green"><%= notice %></p>
+<div class="show-recipes">
+  <div class="sub-show">
+     <h2 class="recipe-name"><%= @recipe.name %></h2>
+     <div class="recipe-contain">
+       <div class="show-time">
+       <p><b>Prepration Time: </b></p>
+           <p class="mx-2"><%= @recipe.preparation_time %> hours</p>
+       </div>
 
-<%= render @recipe %>
+     <div class="form-public">
+      <label class="form-public" for="flexSwitch">Public</label>
+      <input class="show-input" type="checkbox" role="switch" id="flexSwitch">
+    </div>
 
+     </div>
+      <div class="cooking-time">
+       <p><b>Cooking Time: </b></p>
+           <p class="cooking-time-hours"><%= @recipe.cooking_time %> hours</p>
+       </div>
+       <div class="Description">
+       <p><b>Description: </b></p>
+           <p class="Description-form"><%= @recipe.description %></p>
+       </div>
+       <div class="shopping-list">
+           <%= button_to "Generate shopping list", recipe_foods_path, class: 'button-success' %>
+           <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: 'button-success' %>
+       </div>
+ <table class="main-table">
+    <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @recipe_foods.present? %>
+ <% @recipe_foods.each do |recipe_food| %>
+     <tr>
+      <td><%= recipe_food.food.name %> </td>
+      <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
+      <td>$<%= recipe_food.quantity * recipe_food.food.price %></td>
+      <td class="d-flex">
+          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food), class: 'modify-food'%> 
+          <%= button_to "Remove",  recipe_recipe_food_path(recipe_food.recipe.id, recipe_food), method: :delete, class: 'remove-recipe'%>
+    </tr>
+  <% end %>
+   <% else %>
+    <td colspan="4" class="No-ingredients"> No ingredients yet</td>
+   <% end %> 
+
+  </tbody>
+  </table>
+  </div>
+
+</div>
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
   <%= link_to "Back to recipes", recipes_path %>
-
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
-</div>
+  </div>

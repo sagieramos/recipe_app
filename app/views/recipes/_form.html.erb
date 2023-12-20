@@ -1,3 +1,5 @@
+<div>
+  <div> 
 <%= form_with(model: recipe) do |form| %>
   <% if recipe.errors.any? %>
     <div style="color: red">
@@ -12,36 +14,33 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name %>
+    <%= form.number_field :name %>
   </div>
 
   <div>
-    <%= form.label :preparation_time, style: "display: block" %>
-    <%= form.number_field :preparation_time %>
+    <%= form.label :preparation_time %>
+    <%= form.number_field :preparation_time, step: 0.01 %>
   </div>
 
   <div>
-    <%= form.label :cooking_time, style: "display: block" %>
-    <%= form.number_field :cooking_time %>
+    <%= form.label :cooking_time %>
+    <%= form.text_area :cooking_time, step: 0.01 %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.label :description %>
+    <%= form.check_box :description %>
   </div>
 
   <div>
-    <%= form.label :public, style: "display: block" %>
-    <%= form.check_box :public %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
+    <%= form.label :user_id %>
     <%= form.text_field :user_id %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'submit-button' %>
   </div>
 <% end %>
+ </div>
+</div>
