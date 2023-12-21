@@ -33,13 +33,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def toggle_public
-    @recipe = Recipe.find(params[:id])
-    @recipe.update(public: !@recipe.public)
-
-    respond_to(&:js)
-  end
-
   # PATCH/PUT /recipes/1 or /recipes/1.json
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
@@ -56,6 +49,7 @@ class RecipesController < ApplicationController
   def toggle_public
     @recipe = Recipe.find(params[:id])
     @recipe.update(public: !@recipe.public)
+    respond_to(&:js)
     redirect_to @recipe
   end
 
