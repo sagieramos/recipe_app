@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   resources :inventory_foods
   resources :recipe_foods
-  resources :recipes
+  # resources :recipes
+  resources :recipes do
+  member do
+    patch 'toggle_public'
+  end
+end
   resources :inventories
   resources :foods
   resources :users
+
+  root 'users#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

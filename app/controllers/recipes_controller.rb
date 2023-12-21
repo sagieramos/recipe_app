@@ -7,10 +7,7 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show
-    @recipe = set_recipe
-    @recipe_foods = @recipe.recipe_foods.where(recipe_id: @recipe.id)
-  end
+  def show; end
 
   # GET /recipes/new
   def new
@@ -51,6 +48,12 @@ class RecipesController < ApplicationController
       format.json { head :no_content }
     end
     redirect_to recipes_path
+  end
+
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+    redirect_to @recipe
   end
 
   private
