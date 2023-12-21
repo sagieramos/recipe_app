@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :inventories, except: [:update, :edit] do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
+
+  get 'public_recipes' => 'recipes#public_recipes'
   # resources :users
 
   # path for new inventory food
