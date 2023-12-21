@@ -53,6 +53,12 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+    redirect_to @recipe
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
