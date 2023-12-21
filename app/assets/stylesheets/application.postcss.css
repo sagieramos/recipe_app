@@ -1,1 +1,9 @@
 /* Entry point for your PostCSS build */
+
+/* testing scss functionality file watch functionality */
+body {
+  background-color: bisque;
+  h1 {
+    color: saddlebrown;
+  }
+}

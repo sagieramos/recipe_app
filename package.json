@@ -2,12 +2,14 @@
   "name": "app",
   "dependencies": {
     "autoprefixer": "^10.4.16",
+    "nodemon": "^3.0.2",
     "postcss": "^8.4.32",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^15.1.0",
     "postcss-nesting": "^12.0.2"
   },
   "scripts": {
-    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
+    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext css --exec \"yarn build:css\""
   }
 }
