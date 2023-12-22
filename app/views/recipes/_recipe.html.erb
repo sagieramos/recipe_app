@@ -1,39 +1,12 @@
-<div>
+<div class="mt-4">
+  <p><%= recipe.name %></p>
   <p>
-    <%= recipe.name %>
-  </p>
-  <p>
-    <%= button_to "Remove", recipe, method: :delete %>
-  </p>
-  
-
-  <p>
-    <strong>Preparation time:</strong>
-    <%= recipe.preparation_time %>
-  </p>
-  <div>
-    <a href="<%= recipe_path(recipe) %>">
-
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
+    <%= button_to "Remove", recipe, method: :delete, class: 'btn btn-danger' %>
   </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= recipe.description %>
-  </p>
-   <a/>
-  </div>
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
- 
-
-  <p>
-    <strong>User:</strong>
-    <%= recipe.user_id %>
-  </p>
-
-  </div>
+  <p><strong>Preparation time:</strong> <%= recipe.preparation_time %> hours</p>
+  <p><strong>Cooking time:</strong> <%= recipe.cooking_time %> hours</p>
+  <p><strong>Description:</strong> <%= recipe.description %></p>
+  <p><strong>Public:</strong> <%= recipe.public %></p>
+  <p><strong>User:</strong> <%= recipe.user.name %></p>
+</div>

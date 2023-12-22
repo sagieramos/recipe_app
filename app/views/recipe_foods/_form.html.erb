@@ -1,13 +1,13 @@
 <div class="recipe-food">
   <div class="recipe-food-col">
-      <%= form_with(url: recipe_recipe_foods_path(recipe_id: @recipe.id)) do |form| %>
+    <%= form_with(url: recipe_recipe_foods_path(recipe_id: @recipe.id), class: "mt-4") do |form| %>
 
-      <%= select("food", "food_id", Food.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Select Food' }, required: true) %>
+      <%= select("food", "food_id", Food.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Select Food' }, required: true, class: "form-control") %>
 
-      <div>
-        <%= form.label :quantity %> <br>
+      <div class="mb-3">
+        <%= form.label :quantity %><br>
         <span>(in grams/units)</span>
-        <%= form.number_field :quantity, class: "form-control" , required: true %>
+        <%= form.number_field :quantity, class: "form-control", required: true %>
       </div>
 
       <div>
@@ -15,36 +15,8 @@
       </div>
 
       <div>
-        <%= form.submit  "Add ingredient", class: 'submit-button'%>
+        <%= form.submit "Add ingredient", class: 'btn btn-primary submit-button' %>
       </div>
     <% end %>
   </div>
 </div>
-
-    <%if false %>
-  <!--
-  <div>
-    <%= form.label :recipe_id %>
-    <%= form.text_field :recipe_id %>
-     <% unless @edit %>
-  <%= form.label :food_name %>
-  <%= form.text_field :food_name %>
-  <% end %>
-  </div>
-
-  <div>
-    <%= form.label :food_id %>
-    <%= form.text_field :food_id %>
-     <%= form.label :quantity do %>
-    Quantity
-   <span>(in grams/units)</span>
-   <% end %>
-    <%= form.number_field :quantity%>
-  </div>
-
-  <div>
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
-  </div>
-  -->
-  <% end %>

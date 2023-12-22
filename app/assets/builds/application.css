@@ -36,3 +36,17 @@ body {
   color: #333;
   background-color: #ddd;
 }
+
+/* reset for links */
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn a {
+  color: white;
+}

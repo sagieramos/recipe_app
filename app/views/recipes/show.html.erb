@@ -1,4 +1,4 @@
-<div class="show-recipes">
+<div class="show-recipes mt-4">
   <div class="sub-show">
      <h2 class="recipe-name"><%= @recipe.name %></h2>
      <div class="recipe-contain">
@@ -72,20 +72,7 @@
 </div>
 
   <%= render partial: 'modal', locals: {recipe: @recipe} %>
-      <!--
-<div class="modal fade" id="inventory" role="dialog" aria-labelledby="inventoryLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Shopping List</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span class="close-button" aria-hidden="true">&times;</span>
-        </button>
-      <%# render partial: 'inventories/form', locals: {inventory: @inventory} %>
-    </div>
-  </div>
-</div>
-      -->
+
 
 <script>
   function showModal() {
