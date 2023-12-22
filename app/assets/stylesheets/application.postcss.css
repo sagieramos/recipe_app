@@ -29,3 +29,7 @@ a:hover {
 .btn a {
   color: white;
 }
+
+#new-invent-button {
+  border: none;
+}
