@@ -1,15 +1,17 @@
-<div id="<%= dom_id food %>">
+<div id="<%= dom_id inventory_food %>">
+  <p>
+    <strong>Inventory:</strong>
+    <%= inventory_food.inventory_id %>
+  </p>
 
   <p>
     <strong>Food:</strong>
-    <%= food.name %>
+    <%= inventory_food.food_id %>
   </p>
 
   <p>
     <strong>Quantity:</strong>
-    <%= food.quantity %>
+    <%= inventory_food.quantity %>
   </p>
-
-  <%= button_to 'Remove', inventory_inventory_food_path(inventory), method: :delete %>
 
 </div>

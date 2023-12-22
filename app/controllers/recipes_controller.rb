@@ -1,71 +1,47 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit destroy]
-
-  # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @user = current_user
+    @recipes = @user.recipes
   end
 
-  # GET /recipes/1 or /recipes/1.json
   def show
-    @recipe = set_recipe
-    @recipe_foods = @recipe.recipe_foods.where(recipe_id: @recipe.id)
+    @user = current_user
+    @recipe = Recipe.includes(recipe_foods: :food).find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
   end
 
-  # GET /recipes/new
   def new
-    @recipe = Recipe.new
-    @recipe.user = @user
+    @user = current_user
+    @recipe = @user.recipes.new
   end
 
-  # GET /recipes/1/edit
-  def edit; end
-
-  # POST /recipes or /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
-
-    if @recipe.save
-      redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.'
-
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /recipes/1 or /recipes/1.json
-  # DELETE /recipes/1 or /recipes/1.json
-  def destroy
-    @recipe = Recipe.find(params[:id])
-    @recipe.destroy!
+    @user = current_user
+    @recipe = @user.recipes.new(recipe_params)
 
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
-    redirect_to recipes_path
   end
 
-  def toggle_public
+  def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.update(public: !@recipe.public)
-    respond_to(&:js)
-    redirect_to @recipe
-  end
-
-  def public_recipes
-    @recipes = Recipe.where(public: true).order(created_at: :desc)
+    if @recipe.destroy
+      flash[:notice] = 'Recipe deleted.'
+    else
+      flash[:alert] = 'Error deleting recipe.'
+    end
+    redirect_to request.referrer
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_recipe
-    @recipe = Recipe.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
