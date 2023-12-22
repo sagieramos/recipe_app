@@ -1,6 +1,6 @@
 <% if current_user.id == @inventory.user_id %>
     <h2>Add new food to inventory:</h2>
-    <%= form_with url: inventory_foods_path(inventory_id: @inventory)  do |form| %>
+    <%= form_with url: inventory_inventory_foods_path(inventory_id: @inventory)  do |form| %>
 
       <%= select("food", "food_id", Food.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Select Food' }, required: true) %>
 

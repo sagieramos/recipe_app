@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit destroy]
   def index
     @user = current_user
     @recipes = @user.recipes
@@ -37,6 +36,10 @@ class RecipesController < ApplicationController
       flash[:alert] = 'Error deleting recipe.'
     end
     redirect_to request.referrer
+  end
+
+  def public_recipes
+    @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
   private
