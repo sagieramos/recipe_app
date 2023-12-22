@@ -34,6 +34,14 @@ class InventoriesController < ApplicationController
     end
   end
 
+  # GET /shopping_list
+  def shopping_list
+    @recipe = Recipe.find(params[:recipe_id])
+    @inventory = Inventory.find(params[:inventory_id])
+    @shopping_list_foods = ShoppingListGenerator.generate_shopping_list(@inventory.id, @recipe.id)
+    p @shopping_list_foods, @inventory, @recipe
+  end
+
   private
 
   def inventory_params
