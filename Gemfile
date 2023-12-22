@@ -71,3 +71,11 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'devise', '~> 4.9'
 
 gem 'cssbundling-rails', '~> 1.3'
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+end
