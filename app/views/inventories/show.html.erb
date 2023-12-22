@@ -1,10 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<%if @inventory.user == current_user %>
+<h1 class="show-inventory-heading">Inventory 1</h1>
+    <h2 class="show-inventory-name"><%= @inventory.name %></h2>
+    <button class="add-food-button">
+    <%= link_to "Add food", new_inventory_food_path(inventory_id: @inventory.id) %>
+    </button>
+    <hr>
+    
+      <% if @inventory_foods.empty? %>
+        <h4>No foods have been added yet.</h4>
+      <% else %>
 
-<%= render @inventory %>
-
-<div>
-  <%= link_to "Edit this inventory", edit_inventory_path(@inventory) %> |
-  <%= link_to "Back to inventories", inventories_path %>
-
-  <%= button_to "Destroy this inventory", @inventory, method: :delete %>
-</div>
+      <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @inventory_foods.each do | inventory_food | %>
+          <tr>
+        <td><div><%= inventory_food.food.name %></div></td>
+        <td><div><%= inventory_food.quantity %> <%= inventory_food.food.measurement_unit %></div></td>
+        <td class="action">
+        <div>
+        <%= link_to "Remove", inventory_food_path(inventory_id: @inventory.id, id: inventory_food.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "confirm-button" %>
+      </div>
+        </td>
+      </tr>
+        <% end %>
+    </tbody>
+  </table>
+      <% end %>
+      
+  <% else %>
+    <h4>You are not allowed to see this inventory.</h4>
+<% end %>
