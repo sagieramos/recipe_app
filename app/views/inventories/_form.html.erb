@@ -2,7 +2,6 @@
   <% if inventory.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(inventory.errors.count, "error") %> prohibited this inventory from being saved:</h2>
-
       <ul>
         <% inventory.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,16 +11,11 @@
   <% end %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

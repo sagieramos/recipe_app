@@ -1,0 +1,15 @@
+<section id="modal" class="modal-container">
+  <section class="modal-content">
+    <h2>Generating shopping list</h2>
+    <h3>Choose an inventory to use</h3>
+    <%= form_with url: choose_inventory_recipe_path, method: :post do |f| %>
+      <div class="mb-3">
+        <%= f.select :inventory_id, options_from_collection_for_select(current_user.inventories, :id, :name), class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.hidden_field :recipe_id, value: recipe.id %>
+      </div>
+      <%= f.submit "Choose this inventory", class: 'btn btn-primary' %>
+    <% end %>
+  </section>
+</section>

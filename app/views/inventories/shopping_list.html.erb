@@ -1,0 +1,13 @@
+<h1 class="mt-4">Shopping List</h1>
+<p>Amount of food to buy: <%= @shopping_list_foods.length %></p>
+<p>Total price: <%= @shopping_list_foods.sum { |food| food.price * food.quantity } %></p>
+<p>Recipe: <%= link_to @recipe.name, recipe_path(@recipe) %></p>
+<p>Inventory: <%= link_to @inventory.name, inventory_path(@inventory) %></p>
+
+<div id="shopping-list">
+  <% @shopping_list_foods.each do |food| %>
+    <p><strong>Food:</strong> <%= food.name %></p>
+    <p><strong>Quantity:</strong> <%= "#{food.quantity} #{food.measurement_unit}" %></p>
+    <p><strong>Price:</strong> <%= food.price * food.quantity %></p>
+  <% end %>
+</div>

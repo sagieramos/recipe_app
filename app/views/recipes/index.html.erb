@@ -1,23 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="mt-4">
+  <p class="text-success"><%= notice %></p>
 
-<h1>Recipes</h1>
+  <h1>Recipes</h1>
 
-<div id="recipes">
-  <div>
+  <div class="my-recipes">
     <h1>My Recipes</h1>
-     <%= link_to "Add new recipe", new_recipe_path, class: 'm-lg-3 m-2' %>
-  </div>
+    <%= link_to "Add new recipe", new_recipe_path, class: 'btn btn-primary m-lg-3 m-2' %>
   </div>
 
-  <div id="recipes">
-  <div>
-  <% @recipes.each do |recipe| %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-    <div>
-       <%= render recipe %>
-    </div>
-  <% end %>
+  <div class="recipes">
+    <% @recipes.each do |recipe| %>
+      <div class="recipe">
+        <p>
+          <%= link_to "Show this recipe", recipe, class: 'btn btn-secondary' %>
+        </p>
+        <div class="recipe-details">
+          <%= render recipe %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

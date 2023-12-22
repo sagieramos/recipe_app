@@ -2,19 +2,26 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :inventory_foods
-  resources :recipe_foods
+  # resources :inventory_foods
   # resources :recipes
-  resources :recipes do
-  member do
-    patch 'toggle_public'
-  end
-end
-  resources :inventories
   resources :foods
-  resources :users
+  resources :recipes do
+    resources :recipe_foods
+    member do
+      patch 'toggle_public'
+      post 'choose_inventory', to: 'recipes#choose_inventory'
+    end
+  end
 
-  root 'users#index'
+  resources :inventories, except: [:update, :edit] do
+    resources :inventory_foods, only: [:new, :create, :destroy]
+  end
+
+  get 'public_recipes', to: 'recipes#public_recipes'
+  get 'shopping_list', to: 'inventories#shopping_list'
+
+
+  root 'inventories#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -22,5 +29,5 @@ end
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # root "users#index"
 end

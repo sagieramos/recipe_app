@@ -1,0 +1,35 @@
+/* Entry point for your PostCSS build */
+
+@import "./modal.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #ddd;
+}
+
+/* reset for links */
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn a {
+  color: white;
+}
+
+#new-invent-button {
+  border: none;
+}
