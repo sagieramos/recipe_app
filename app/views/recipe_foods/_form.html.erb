@@ -1,32 +1,39 @@
+<div class="recipe-food">
+    <div class="recipe-food-col">
 <%= form_with(model: recipe_food) do |form| %>
-  <% if recipe_food.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:</h2>
-
-      <ul>
-        <% recipe_food.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div>
-    <%= form.label :recipe_id, style: "display: block" %>
+    <%= form.label :recipe_id %>
     <%= form.text_field :recipe_id %>
+     <% unless @edit %>
+  <%= form.label :food_name %>
+  <%= form.text_field :food_name %>
+  <% end %>
   </div>
 
   <div>
-    <%= form.label :food_id, style: "display: block" %>
+    <%= form.label :food_id %>
     <%= form.text_field :food_id %>
+     <%= form.label :quantity do %>
+    Quantity
+   <span>(in grams/units)</span>
+   <% end %>
+    <%= form.number_field :quantity%>
   </div>
 
   <div>
-    <%= form.label :quantity, style: "display: block" %>
+    <%= form.label :quantity %>
     <%= form.number_field :quantity %>
   </div>
+  
+  <div>
+   <%= form.hidden_field :recipe_id, value: @recipe.id %>
+   </div>
 
   <div>
     <%= form.submit %>
+    <%= form.submit  "Add ingredient", class: 'submit-button'%>
   </div>
 <% end %>
+ </div>
+</div>
