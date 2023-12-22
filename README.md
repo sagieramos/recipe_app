@@ -91,8 +91,13 @@ it will install the required gemfile for running the project
 
 to use this project:
 
-```ruby
-   bin/rails server or
+```sh
+   ruby
+   bin/rails server
+```
+Or
+
+```sh
    rails server
 ```
 
@@ -100,7 +105,8 @@ it will run the the server on ```localhost:3000```
 
 to run tests:
 
-```rspec
+```sh
+   rspec 
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
