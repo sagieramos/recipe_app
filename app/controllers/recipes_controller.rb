@@ -42,6 +42,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
+  def choose_inventory
+    @recipe = Recipe.find(params[:id])
+    @inventory = Inventory.find(params[:inventory_id])
+    redirect_to shopping_list_path(recipe_id: @recipe.id, inventory_id: @inventory.id)
+  end
+
   private
 
   def recipe_params

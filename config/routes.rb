@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :recipe_foods
     member do
       patch 'toggle_public'
+      post 'choose_inventory', to: 'recipes#choose_inventory'
     end
   end
 
@@ -16,8 +17,8 @@ Rails.application.routes.draw do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
 
+  get 'public_recipes', to: 'recipes#public_recipes'
   get 'shopping_list', to: 'inventories#shopping_list'
-  get 'public_recipes' => 'recipes#public_recipes'
 
 
   root 'inventories#index'

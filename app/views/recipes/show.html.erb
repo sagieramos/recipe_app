@@ -22,7 +22,7 @@
            <p class="Description-form"><%= @recipe.description %></p>
        </div>
        <div class="shopping-list">
-           <%= button_to "Generate shopping list", class: 'button-success' %>
+           <button data-toggle="modal" onclick="showModal()" data-target="#inventory">Create Shopping List</button>
            <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: 'button-success' %>
        </div>
  <table class="main-table">
@@ -36,7 +36,7 @@
   </thead>
   <tbody>
   <% if @recipe_foods.present? %>
- <% @recipe_foods.each do |recipe_food| %>
+    <% @recipe_foods.each do |recipe_food| %>
      <tr>
       <td><%= recipe_food.food.name %> </td>
       <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
@@ -45,29 +45,19 @@
           <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food), class: 'modify-food'%>
           <%= button_to "Remove",  recipe_recipe_food_path(recipe_food.recipe.id, recipe_food), method: :delete, class: 'remove-recipe'%>
     </tr>
-  <% end %>
-   <% else %>
+    <% end %>
+  <% else %>
     <td colspan="4" class="No-ingredients"> No ingredients yet</td>
-   <% end %>
+  <% end %>
 
   </tbody>
   </table>
   </div>
-<% end %>
+<%# end %>
 
 <% if @user == @recipe.user %>
   <%= link_to "Add New Food", new_food_path(@recipe) %>
 <% end %>
-
-<button data-toggle="modal" data-target="#inventory">Create Shopping List</button>
-<div class="modal fade" id="inventory" tabindex="-1" role="dialog" aria-labelledby="inventoryLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <%# render partial: 'inventories/form', locals: {inventory: @inventory} %>
-    </div>
-  </div>
-</div>
-<%= link_to 'generate shopping list', shopping_list_path(inventory_id: Inventory.first.id, recipe_id: @recipe.id) %>
 
 
 
@@ -80,3 +70,27 @@
   <%= link_to "Back to recipes", recipes_path %>
   <%= button_to "Destroy this recipe", @recipe, method: :delete %>
 </div>
+
+  <%= render partial: 'modal', locals: {recipe: @recipe} %>
+      <!--
+<div class="modal fade" id="inventory" role="dialog" aria-labelledby="inventoryLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Shopping List</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="close-button" aria-hidden="true">&times;</span>
+        </button>
+      <%# render partial: 'inventories/form', locals: {inventory: @inventory} %>
+    </div>
+  </div>
+</div>
+      -->
+
+<script>
+  function showModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.add('show');
+  }
+
+</script>
