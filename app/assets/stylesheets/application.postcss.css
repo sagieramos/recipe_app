@@ -1,5 +1,7 @@
 /* Entry point for your PostCSS build */
 
+@import "./modal.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +13,5 @@ body {
   font-size: 18px;
   line-height: 1.5;
   color: #333;
-  background-color: #f0ff8c;
+  background-color: #ddd;
 }
-
-@import "./modal.scss";
