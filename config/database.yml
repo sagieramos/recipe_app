@@ -21,6 +21,6 @@ test:
 production:
   <<: *default
   database: recipe_app_prod
-  username: sagie
+  username: postgres
   password: password
   host: localhost

@@ -5,7 +5,7 @@
     <%= link_to "Add food", new_inventory_food_path(inventory_id: @inventory.id) %>
     </button>
     <hr>
-    
+
       <% if @inventory_foods.empty? %>
         <h4>No foods have been added yet.</h4>
       <% else %>
@@ -33,7 +33,7 @@
     </tbody>
   </table>
       <% end %>
-      
+
   <% else %>
     <h4>You are not allowed to see this inventory.</h4>
 <% end %>
