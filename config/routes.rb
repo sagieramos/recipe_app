@@ -2,10 +2,9 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  # resources :inventory_foods
+  resources :inventory_foods
   resources :recipe_foods
   # resources :recipes
-  resources :foods
   resources :recipes do
     member do
       patch 'toggle_public'
@@ -28,5 +27,5 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "users#index"
+  # root "posts#index"
 end

@@ -42,13 +42,13 @@
       <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
       <td>$<%= recipe_food.quantity * recipe_food.food.price %></td>
       <td class="d-flex">
-          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food), class: 'modify-food'%>
+          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food), class: 'modify-food'%> 
           <%= button_to "Remove",  recipe_recipe_food_path(recipe_food.recipe.id, recipe_food), method: :delete, class: 'remove-recipe'%>
     </tr>
   <% end %>
    <% else %>
     <td colspan="4" class="No-ingredients"> No ingredients yet</td>
-   <% end %>
+   <% end %> 
 
   </tbody>
   </table>

@@ -69,5 +69,3 @@ end
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'devise', '~> 4.9'
-
-gem 'cssbundling-rails', '~> 1.3'
