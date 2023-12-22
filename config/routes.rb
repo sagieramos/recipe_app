@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
 
-  get 'public_recipes' => 'recipes#public_recipes'
+  get 'public_recipes', to: 'recipes#public_recipes'
+  get 'shopping_list', to: 'inventories#shopping_list'
+
   # resources :users
 
   # path for new inventory food

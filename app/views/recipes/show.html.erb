@@ -17,6 +17,16 @@
 <% end %>
 
 <button data-toggle="modal" data-target="#inventory">Create Shopping List</button>
+<div class="modal fade" id="inventory" tabindex="-1" role="dialog" aria-labelledby="inventoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%# render partial: 'inventories/form', locals: {inventory: @inventory} %>
+    </div>
+  </div>
+</div>
+<%= link_to 'generate shopping list', shopping_list_path(inventory_id: Inventory.first.id, recipe_id: @recipe.id) %>
+
+
 
 <%= render partial: 'recipe_foods/recipe_food', collection: @recipe.foods, as: :food %>
 
