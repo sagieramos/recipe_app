@@ -13,5 +13,3 @@ body {
   color: #333;
   background-color: #f0ff8c;
 }
-
-@import "./modal.scss";
