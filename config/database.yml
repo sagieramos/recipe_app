@@ -7,15 +7,15 @@ default: &default
 development:
   <<: *default
   database: recipe_app_dev
-  username: sagie
-  password: password
+  username: postgres
+  password: NQ1234ta
   host: localhost
 
 test:
   <<: *default
   database: recipe_app_test
-  username: sagie
-  password: password
+  username: postgres
+  password: NQ1234ta
   host: localhost
 
 production:
