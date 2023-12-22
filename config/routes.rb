@@ -11,14 +11,13 @@ Rails.application.routes.draw do
       patch 'toggle_public'
     end
   end
+
   resources :inventories, except: [:update, :edit] do
     resources :inventory_foods, only: [:new, :create, :destroy]
   end
 
-  get 'public_recipes' => 'recipes#public_recipes'
-  # resources :users
 
-  # path for new inventory food
+  get 'public_recipes' => 'recipes#public_recipes'
 
 
   root 'inventories#index'
@@ -29,5 +28,5 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # root "users#index"
 end
