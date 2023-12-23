@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Inventories index', type: :feature do
+  # Inventories list:
+
+  # Should display a list of inventories created by the logged-in user as in the wireframe.
+  # Should lead to inventory details.
+  # If the user is the owner of the inventory, should allow to delete it.
+
   describe 'Inventories list' do
     let(:user) { FactoryBot.create(:user) }
     let(:inventory) { FactoryBot.create(:inventory, user: user) }
@@ -25,7 +31,9 @@ RSpec.describe 'Inventories index', type: :feature do
 
     it 'should allow to delete it' do
       click_link 'Delete'
-      expect(page).to have_content('Inventory successfully deleted.')
+      sleep(1)
+      page.driver.browser.switch_to.alert.accept if page.driver.browser.switch_to.alert.text == 'Are you sure?'
+      expect(page).to have_content('Inventory was successfully deleted.')
     end
   end
 end

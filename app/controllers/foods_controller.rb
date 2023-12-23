@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
         format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
         format.json { render :show, status: :created, location: @food }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity, alert: 'Food was not created.' }
         format.json { render json: @food.errors, status: :unprocessable_entity }
       end
     end
@@ -39,7 +39,7 @@ class FoodsController < ApplicationController
         format.html { redirect_to food_url(@food), notice: 'Food was successfully updated.' }
         format.json { render :show, status: :ok, location: @food }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity, alert: 'Food was not updated.' }
         format.json { render json: @food.errors, status: :unprocessable_entity }
       end
     end

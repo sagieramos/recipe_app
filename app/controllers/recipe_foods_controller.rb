@@ -11,7 +11,7 @@ class RecipeFoodsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.new(food_id: params[:food][:food_id], quantity: params[:quantity])
     if @recipe_food.save
-      redirect_to recipe_path(@recipe), notice: 'Recipe food successfully created.'
+      redirect_to recipe_path(@recipe), notice: 'Recipe food was successfully created.'
     else
       render :new, alert: 'Recipe food not created.'
     end
@@ -21,9 +21,9 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
     @recipe = @recipe_food.recipe
     if @recipe_food.destroy
-      redirect_to recipe_path(@recipe), notice: 'Recipe food successfully deleted.'
+      redirect_to recipe_path(@recipe), notice: 'Recipe food was successfully deleted.'
     else
-      redirect_to recipe_path(@recipe), alert: 'Recipe food not deleted.'
+      redirect_to recipe_path(@recipe), alert: 'Recipe food was not deleted.'
     end
   end
 
@@ -38,9 +38,9 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
     @recipe = @recipe_food.recipe
     if @recipe_food.update(recipe_food_params)
-      redirect_to recipe_path(@recipe), notice: 'Recipe food successfully updated.'
+      redirect_to recipe_path(@recipe), notice: 'Recipe food was successfully updated.'
     else
-      redirect_to request.referrer, alert: 'Recipe food not updated.'
+      redirect_to request.referrer, alert: 'Recipe food was not updated.'
     end
   end
 
