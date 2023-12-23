@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <p><b>Preparation Time:</b> <%= @recipe.preparation_time %> hours</p>
         <p><b>Cooking Time:</b> <%= @recipe.cooking_time %> hours</p>
-        <p><b>Description:</b> <%= @recipe.description %></p>
+        <p class="text-break"><b>Description:</b> <%= @recipe.description %></p>
       </div>
       <div class="col-md-6">
         <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, html: { id: 'public-form' } do |f| %>

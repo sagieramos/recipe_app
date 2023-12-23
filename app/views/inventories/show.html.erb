@@ -1,6 +1,6 @@
 <% if @inventory.user == current_user %>
   <h2 class="show-inventory-name"><%= @inventory.name %></h2>
-  <p class="show-inventory-description"><%= @inventory.description %></p>
+  <p class="show-inventory-description text-break"><%= @inventory.description %></p>
   <button class="btn btn-primary add-food-button">
     <%= link_to "Add food", new_inventory_inventory_food_path(inventory_id: @inventory.id) %>
   </button>
