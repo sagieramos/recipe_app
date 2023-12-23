@@ -1,12 +1,9 @@
 <div class="card mt-4">
   <div class="card-body">
-    <h5 class="card-title"><%= recipe.name %></h5>
-    <p class="card-text"><strong>Preparation time:</strong> <%= recipe.preparation_time %> hours</p>
-    <p class="card-text"><strong>Cooking time:</strong> <%= recipe.cooking_time %> hours</p>
-    <p class="card-text"><strong>Description:</strong> <%= recipe.description %></p>
-    <p class="card-text"><strong>Public:</strong> <%= recipe.public %></p>
-    <p class="card-text"><strong>By:</strong> <%= recipe.user.name %></p>
-    <%= button_to "Remove", recipe, method: :delete,data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
-    <%= link_to "Show this recipe", recipe, class: 'btn btn-primary' %>
+    <div>
+    <h5 class="card-title"><%= link_to recipe.name, recipe %></h5>
+     <%= button_to "Remove", recipe, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+    </div>
+    <p class="card-text"><%= recipe.description %></p>
   </div>
 </div>
