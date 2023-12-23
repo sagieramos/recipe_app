@@ -23,7 +23,7 @@
 
   <div class="mb-3">
     <%= form.label :price, class: "form-label" %>
-    <%= form.text_field :price, class: "form-control" %>
+    <%= form.text_field :price, class: "form-control", type: "number", step: "1", pattern: "\d*" %>
   </div>
 
   <div class="mb-3">
