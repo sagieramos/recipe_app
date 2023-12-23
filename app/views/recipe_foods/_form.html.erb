@@ -1,0 +1,22 @@
+<div class="recipe-food">
+  <div class="recipe-food-col">
+    <%= form_with(url: recipe_recipe_foods_path(recipe_id: @recipe.id), class: "mt-4") do |form| %>
+
+      <%= select("food", "food_id", Food.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Select Food' }, required: true, class: "form-control") %>
+
+      <div class="mb-3">
+        <%= form.label :quantity %><br>
+        <span>(in grams/units)</span>
+        <%= form.number_field :quantity, class: "form-control", required: true %>
+      </div>
+
+      <div>
+        <%= form.hidden_field :recipe_id, value: @recipe.id %>
+      </div>
+
+      <div>
+        <%= form.submit "Add ingredient", class: 'btn btn-primary submit-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

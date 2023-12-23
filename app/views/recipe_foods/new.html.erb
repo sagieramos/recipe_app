@@ -1,0 +1,9 @@
+<h2 class="add-ingredients">Add Ingredients</h2>
+
+<%= render "form", recipe_food: @recipe_food %>
+
+<br>
+
+<div class="recipe-back">
+  <%= link_to "Back to recipe", recipe_path(@recipe), class: "btn btn-secondary" %>
+</div>

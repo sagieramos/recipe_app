@@ -1,0 +1,25 @@
+<h1>Public Recipes</h1>
+
+<div class="mt-4">
+  <% @recipes.each do |recipe| %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <%= link_to recipe, class:"d-flex flex-grow-1 text-black" do %>
+
+            <div>
+              <h3 class="card-title"><%= recipe.name %></h3>
+              <p class="card-text"><strong>By:</strong> <%= recipe.user.name %></p>
+            </div>
+            <div class="mx-5">
+              <p class="card-text"><strong>Total price:</strong> <%= recipe.foods.sum(:price) %></p>
+              <p class="card-text"><strong>Total food items:</strong> <%= recipe.foods.length %></p>
+            </div>
+
+        <% end %>
+        <div class="d-flex align-items-center ms-auto">
+          <%= button_to "Remove", recipe, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' if recipe.user == current_user %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

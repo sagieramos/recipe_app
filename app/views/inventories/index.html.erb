@@ -1,0 +1,36 @@
+<div id="inventories">
+  <h1 id="invent-heading">Inventories</h1>
+  <hr>
+  <% if @inventories.empty? %>
+    <div>
+      <h3 class="no-inventory">No inventories yet.</h3>
+    </div>
+  <% else %>
+    <% @inventories.each do |inventory| %>
+      <div class="card mt-2">
+        <div class="card-body">
+          <div>
+            <div class="card-title text-center">
+                <%= link_to inventory.name, inventory_path(inventory) %>
+            </div>
+
+            <div class="invent-actions">
+              <button class="btn btn-danger show-button">
+                <%= link_to 'Delete', inventory_path(inventory), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete %>
+              </button>
+            </div>
+          </div>
+            <%= link_to inventory, class:"flex-grow-1" do %>
+              <div class="card-text text-break text-black">
+                <p><%=  inventory.description %></p>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <button id="new-invent-button" class="mt-lg-3 mt-2">
+    <%= link_to 'New Inventory', new_inventory_path, id: "new-inventory", class: "btn btn-primary" %>
+  </button>
+</div>

@@ -1,0 +1,15 @@
+<% if current_user.id == @inventory.user_id %>
+  <h2>Add new food to inventory:</h2>
+  <%= form_with url: inventory_inventory_foods_path(inventory_id: @inventory), class: "mt-4"  do |form| %>
+
+    <%= select("food", "food_id", Food.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Select Food' }, required: true, class: "form-control") %>
+
+    <div class="mb-3">
+      <%= form.label :quantity %><br>
+      <span>(in grams/units)</span>
+      <%= form.number_field :quantity, class: "form-control", required: true %>
+    </div>
+
+    <%= form.submit "Create", data: { turbo: false }, class: "btn btn-primary Create-button" %>
+  <% end %>
+<% end %>

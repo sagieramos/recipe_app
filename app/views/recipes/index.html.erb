@@ -1,0 +1,18 @@
+<div class="mt-4">
+  <p class="text-success"><%= notice %></p>
+
+  <div class="my-recipes">
+    <h1>My Recipes</h1>
+  </div>
+
+  <div class="recipes">
+    <% @recipes.each do |recipe| %>
+      <div class="recipe">
+        <div class="recipe-details">
+          <%= render recipe %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+    <%= link_to "Add new recipe", new_recipe_path, class: 'btn btn-primary mt-lg-3 mt-2' %>
+</div>
