@@ -19,7 +19,7 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new(inventory_params)
     @inventory.user = current_user
     if @inventory.save
-      redirect_to @inventory, notice: 'Inventory successfully created.'
+      redirect_to @inventory, notice: 'Inventory was successfully created.'
     else
       render :new, alert: 'Inventory not created.'
     end
@@ -28,9 +28,9 @@ class InventoriesController < ApplicationController
   def destroy
     @inventory = Inventory.find(params[:id])
     if @inventory.destroy
-      redirect_to inventories_path, notice: 'Inventory successfully deleted.'
+      redirect_to inventories_path, notice: 'Inventory was successfully deleted.'
     else
-      redirect_to inventories_path, alert: 'Inventory not deleted.'
+      redirect_to inventories_path, alert: 'Inventory was not deleted.'
     end
   end
 
@@ -39,7 +39,6 @@ class InventoriesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @inventory = Inventory.find(params[:inventory_id])
     @shopping_list_foods = ShoppingListGenerator.generate_shopping_list(@inventory.id, @recipe.id)
-    p @shopping_list_foods, @inventory, @recipe
   end
 
   private

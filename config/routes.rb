@@ -2,8 +2,6 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  # resources :inventory_foods
-  # resources :recipes
   resources :foods
   resources :recipes do
     resources :recipe_foods
@@ -29,5 +27,4 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "users#index"
 end

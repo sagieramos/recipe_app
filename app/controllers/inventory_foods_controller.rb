@@ -11,7 +11,7 @@ class InventoryFoodsController < ApplicationController
     @inventory = Inventory.find(params[:inventory_id])
     @inventory_food = @inventory.inventory_foods.new(food_id: params[:food][:food_id], quantity: params[:quantity])
     if @inventory_food.save
-      redirect_to inventory_path(@inventory), notice: 'Inventory food successfully created.'
+      redirect_to inventory_path(@inventory), notice: 'Inventory food was successfully created.'
     else
       render :new, alert: 'Inventory food not created.'
     end
@@ -22,9 +22,9 @@ class InventoryFoodsController < ApplicationController
     @inventory = @inventory_food.inventory
 
     if @inventory_food.destroy
-      redirect_to inventory_path(@inventory), notice: 'Inventory food successfully deleted.'
+      redirect_to inventory_path(@inventory), notice: 'Inventory food was successfully deleted.'
     else
-      redirect_to inventory_path(@inventory), alert: 'Inventory food not deleted.'
+      redirect_to inventory_path(@inventory), alert: 'Inventory food was not deleted.'
     end
   end
 

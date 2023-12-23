@@ -10,7 +10,7 @@
         <p class="card-text"><strong>Total food items:</strong> <%= recipe.foods.length %></p>
         <p class="card-text"><strong>By:</strong> <%= recipe.user.name %></p>
         <div class="d-flex justify-content-around">
-          <%= button_to "Remove", recipe, method: :delete, class: 'btn btn-danger' %>
+          <%= button_to "Remove", recipe, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' if recipe.user == current_user %>
           <%= link_to "Show this recipe", recipe, class: 'btn btn-primary' %>
         </div>
       </div>

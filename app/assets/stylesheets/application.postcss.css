@@ -1,6 +1,6 @@
 /* Entry point for your PostCSS build */
 
-@import "./modal.scss";
+@import url("./modal.scss");
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 18px;
   line-height: 1.5;
   color: #333;
