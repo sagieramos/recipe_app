@@ -53,7 +53,7 @@
       <div class="col-md-6">
         <% if @user == @recipe.user %>
           <div>
-            <%= link_to "Add New Food", new_food_path(@recipe), class: 'btn btn-primary' %>
+            <%= link_to "Add New Food", new_recipe_recipe_food_path(@recipe), class: 'btn btn-primary' %>
           </div>
         <% end %>
       </div>
