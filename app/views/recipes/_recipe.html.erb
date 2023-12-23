@@ -4,6 +4,8 @@
     <h5 class="card-title text-center"><%= link_to recipe.name, recipe %></h5>
      <%= button_to "Remove", recipe, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
     </div>
-    <p class="card-text text-break"><%= recipe.description %></p>
+    <%= link_to recipe, class:"flex-grow-1" do %>
+      <p class="card-text text-break text-black"><%= recipe.description %></p>
+    <% end %>
   </div>
 </div>

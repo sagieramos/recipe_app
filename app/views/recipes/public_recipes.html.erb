@@ -4,13 +4,13 @@
   <% @recipes.each do |recipe| %>
     <div class="card mt-4">
       <div class="card-body">
-        <%= link_to recipe, class:"d-flex justify-content-around w-50 text-black" do %>
+        <%= link_to recipe, class:"d-flex flex-grow-1 text-black" do %>
 
             <div>
               <h3 class="card-title"><%= recipe.name %></h3>
               <p class="card-text"><strong>By:</strong> <%= recipe.user.name %></p>
             </div>
-            <div>
+            <div class="mx-5">
               <p class="card-text"><strong>Total price:</strong> <%= recipe.foods.sum(:price) %></p>
               <p class="card-text"><strong>Total food items:</strong> <%= recipe.foods.length %></p>
             </div>

@@ -20,10 +20,11 @@
               </button>
             </div>
           </div>
-
-            <div class="card-text text-break">
-              <p><%= inventory.description %></p>
-            </div>
+            <%= link_to inventory, class:"flex-grow-1" do %>
+              <div class="card-text text-break text-black">
+                <p><%=  inventory.description %></p>
+              </div>
+            <% end %>
         </div>
       </div>
     <% end %>
