@@ -1,38 +1,36 @@
 <div id="inventories">
   <h1 id="invent-heading">Inventories</h1>
   <hr>
-
-  <button id="new-invent-button">
-    <%= link_to 'New Inventory', new_inventory_path, id: "new-inventory", class: "btn btn-primary" %>
-  </button>
-
   <% if @inventories.empty? %>
     <div>
       <h3 class="no-inventory">No inventories yet.</h3>
     </div>
   <% else %>
     <% @inventories.each_with_index do |inventory, index| %>
-      <div class="inventory">
-        <div class="invent-main-info">
-          <div class="invent-heading">
-            <h2>Inventory <%= index + 1 %></h2>
-          </div>
+      <div class="card">
+        <div class="card-body">
+          <div>
           <div class="invent-name">
-            <h3><%= inventory.name %></h3>
+              <%= link_to inventory.name, inventory_path(inventory) %>
           </div>
+
           <div class="invent-actions">
             <button class="btn btn-primary show-button">
-              <%= link_to 'Show', inventory_path(inventory) %>
-            </button>
-            <button class="btn btn-danger delete-button">
               <%= link_to 'Delete', inventory_path(inventory), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete %>
             </button>
           </div>
+
+          <div class="card-text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit quam sit amet lacus sagittis, a efficitur mi facilisis. Sed fermentum magna et nisi tristique, in tempor libero scelerisque. Nullam vel massa vitae nulla ultricies vestibulum at nec dui. Proin in consequat risus. Nulla facilisi. Duis vitae mauris et quam convallis fermentum.</p>
+          </div>
+          
         </div>
-        <div class="invent-description">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit quam sit amet lacus sagittis, a efficitur mi facilisis. Sed fermentum magna et nisi tristique, in tempor libero scelerisque. Nullam vel massa vitae nulla ultricies vestibulum at nec dui. Proin in consequat risus. Nulla facilisi. Duis vitae mauris et quam convallis fermentum.</p>
         </div>
       </div>
     <% end %>
   <% end %>
+
+  <button id="new-invent-button">
+    <%= link_to 'New Inventory', new_inventory_path, id: "new-inventory", class: "btn btn-primary" %>
+  </button>
 </div>
