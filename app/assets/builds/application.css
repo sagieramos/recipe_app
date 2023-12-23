@@ -51,6 +51,21 @@ a:hover {
   color: white;
 }
 
+.card-title a {
+  color: #333;
+}
+
+
 #new-invent-button {
   border: none;
+}
+
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card-text {
+  align-self: flex-start;
 }
