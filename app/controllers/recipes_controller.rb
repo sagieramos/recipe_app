@@ -48,6 +48,12 @@ class RecipesController < ApplicationController
     redirect_to shopping_list_path(recipe_id: @recipe.id, inventory_id: @inventory.id)
   end
 
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle_public
+    redirect_to @recipe
+  end
+
   private
 
   def recipe_params
