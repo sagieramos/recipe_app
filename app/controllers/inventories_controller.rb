@@ -36,6 +36,11 @@ class InventoriesController < ApplicationController
 
   # GET /shopping_list
   def shopping_list
+    unless params[:inventory_id] && params[:recipe_id]
+      redirect_to recipes_path, alert:
+                                 'You need to choose an inventory, and a recipe to generate a shopping list.'
+      return
+    end
     @recipe = Recipe.find(params[:recipe_id])
     @inventory = Inventory.find(params[:inventory_id])
     @shopping_list_foods = ShoppingListGenerator.generate_shopping_list(@inventory.id, @recipe.id)

@@ -24,18 +24,18 @@ RSpec.describe 'Public recipes', type: :feature do
 
     it 'should display a list of all public recipes ordered by newest' do
       recipes.reverse.each_with_index do |recipe, index|
-        expect(page).to have_selector(".card:nth-child(#{index + 1 + recipes.size}) h5.card-title", text: recipe.name)
+        expect(page).to have_selector(".card:nth-child(#{index + 1 + recipes.size}) h3.card-title", text: recipe.name)
       end
 
       expect(page).not_to have_content(recipes2.first.name)
 
       recipes3.reverse.each_with_index do |recipe, index|
-        expect(page).to have_selector(".card:nth-child(#{index + 1}) h5.card-title", text: recipe.name)
+        expect(page).to have_selector(".card:nth-child(#{index + 1}) h3.card-title", text: recipe.name)
       end
     end
 
     it 'should lead to recipe details' do
-      page.all(:link, 'Show')[0].click
+      click_link recipes.last.name
       expect(page).to have_content(recipes.last.name)
     end
 

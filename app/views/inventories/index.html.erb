@@ -15,7 +15,7 @@
             </div>
 
             <div class="invent-actions">
-              <button class="btn btn-primary show-button">
+              <button class="btn btn-danger show-button">
                 <%= link_to 'Delete', inventory_path(inventory), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, method: :delete %>
               </button>
             </div>
@@ -29,7 +29,7 @@
     <% end %>
   <% end %>
 
-  <button id="new-invent-button" class="mt-2">
+  <button id="new-invent-button" class="mt-lg-3 mt-2">
     <%= link_to 'New Inventory', new_inventory_path, id: "new-inventory", class: "btn btn-primary" %>
   </button>
 </div>

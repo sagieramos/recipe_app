@@ -1,11 +1,8 @@
 <div class="mt-4">
   <p class="text-success"><%= notice %></p>
 
-  <h1>Recipes</h1>
-
   <div class="my-recipes">
     <h1>My Recipes</h1>
-    <%= link_to "Add new recipe", new_recipe_path, class: 'btn btn-primary m-lg-3 m-2' %>
   </div>
 
   <div class="recipes">
@@ -17,4 +14,5 @@
       </div>
     <% end %>
   </div>
+    <%= link_to "Add new recipe", new_recipe_path, class: 'btn btn-primary mt-lg-3 mt-2' %>
 </div>

@@ -25,7 +25,7 @@ RSpec.describe 'Inventories index', type: :feature do
     end
 
     it 'should lead to inventory details' do
-      click_link 'Show'
+      click_link inventory.name
       expect(page).to have_content(inventory.name)
     end
 

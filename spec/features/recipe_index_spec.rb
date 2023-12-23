@@ -26,7 +26,7 @@ RSpec.describe 'Recipe index', type: :feature do
     end
 
     it 'should lead to recipe details' do
-      page.all(:link, 'Show')[0].click
+      click_on recipe.name
       expect(page).to have_content(recipe.name)
     end
 
