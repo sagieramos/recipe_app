@@ -1,6 +1,7 @@
+require 'faker'
 FactoryBot.define do
   factory :inventory do
-    name { 'test inventory' }
+    name { Faker::Color.color_name }
     user
   end
 end

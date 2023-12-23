@@ -8,18 +8,25 @@ RSpec.describe Recipe, type: :model do
 
   describe 'methods' do
     let(:user) { FactoryBot.create(:user) }
-    let(:recipe) { FactoryBot.create(:recipe, user: user) }
     let(:food) { FactoryBot.create(:food) }
+    let(:recipe) { FactoryBot.create(:recipe, user: user, public: true) }
     let(:recipe_food) { FactoryBot.create(:recipe_food, recipe: recipe, food: food) }
+
+    before(:each) do
+      user
+      food
+      recipe
+      recipe_food
+    end
 
     describe '#foods' do
       it 'should return all foods for a recipe' do
-        expect(recipe.foods).to eq([recipe_food])
+        expect(recipe.foods).to eq(RecipeFood.joins(:food).where(recipe_id: recipe.id)
+        .select('foods.name, recipe_foods.quantity, foods.price'))
       end
 
       it 'should return the correct fields' do
-        p recipe.foods.first, recipe.foods
-        expect(recipe.foods.first.attributes.keys).to eq(%w[name quantity price])
+        expect(recipe.foods.first.attributes.keys).to eq(%w[name quantity price id])
       end
     end
 

@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :recipe do
-    name { 'test recipe' }
-    description { 'test description' }
-    preparation_time { 10 }
-    cooking_time { 10 }
-    public { true }
+    name { Faker::Food.dish }
+    description { Faker::Food.description }
+    preparation_time { Faker::Number.between(from: 1, to: 60) }
+    cooking_time { Faker::Number.between(from: 1, to: 60) }
+    public { Faker::Boolean.boolean }
     user
   end
 end

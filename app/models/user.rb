@@ -23,7 +23,7 @@ class User < ApplicationRecord
     return if complexity_errors.empty?
 
     errors.add(:password,
-               "Complexity requirement not met. The password needs at least: #{complexity_errors.join(', and')}")
+               "Complexity requirement not met. The password needs at least: #{complexity_errors.join(', and ')}")
   end
 
   # override devise confiramable for now
